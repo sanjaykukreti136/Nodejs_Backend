@@ -8,14 +8,14 @@ app.listen('3000', () => {
 })
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.static(path.join(__dirname, 'public')));
 const adminRoutes = require('./routes/admin');
 const publicRoutes = require('./routes/shop');
 app.use('/admin', adminRoutes);
 app.use(publicRoutes);   ////  it is comment bcz it will redirect to '/' url , so if it will not commentd
 /// then our 404 page never executed
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname + '/404PAGE/404.html')) /// 404 page should be in last
+    res.status(404).sendFile(path.join(__dirname + '/views/page-not-found.html')) /// 404 page should be in last
 })
 
 
