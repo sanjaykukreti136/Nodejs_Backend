@@ -3,7 +3,7 @@ const path = require('path')
 const router = express.Router();
 //// unser admin/add-item
 router.use('/add_item', (req, res, next) => {
-    res.sendFile(path.join(__dirname + '/form.html'));
+    res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
 })
 let x = "";
 router.post('/action_on_item', (req, res, next) => {
