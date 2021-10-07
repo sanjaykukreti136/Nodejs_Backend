@@ -6,7 +6,8 @@ const products = [];
 
 //// unser admin/add-item
 router.get('/add_item', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
+    res.render('add-product', { pageTitle: "ADD PRODUCT" })
+    //res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
 })
 let x = "";
 router.post('/add_item', (req, res, next) => {
