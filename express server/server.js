@@ -7,11 +7,15 @@ app.listen('3000', () => {
 
 })
 
+//   SETTING GLOBAL VIEW ENGINE FOR  TEMPLATES
+app.set('view engine', 'pug');
+app.set('views', 'views');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-const adminRoutes = require('./routes/admin');
+const exp_routes = require('./routes/admin');
 const publicRoutes = require('./routes/shop');
-app.use('/admin', adminRoutes);
+app.use('/admin', exp_routes.routes);
 app.use(publicRoutes);   ////  it is comment bcz it will redirect to '/' url , so if it will not commentd
 /// then our 404 page never executed
 app.use((req, res) => {
