@@ -4,7 +4,7 @@ const router = express.Router();
 const adminData = require('./admin')
 router.get('/', (req, res, next) => {
     console.log(adminData.product);
-    res.render('shop', { prods: adminData.product, docTitle: "My Shop ." })
+    res.render('shop', { prods: adminData.product, docTitle: "My Shop .", path: '/' })
     // res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));  /// send html file to the client 
 })
 
