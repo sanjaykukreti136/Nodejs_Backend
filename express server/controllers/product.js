@@ -14,8 +14,11 @@ exports.getSendProudct = (req, res, next) => {
 
 exports.shopProducts = (req, res, next) => {
     // console.log(adminData.product);
-    const products = Products.fetchAll();
-    res.render('shop', { prods: products, pageTitle: "My Shop .", path: '/' })
+    // const products = Products.fetchAll();
+    Products.fetchAll(products => {
+        res.render('shop', { prods: products, pageTitle: "My Shop .", path: '/' })
+    })
+
     // res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));  /// send html file to the client 
 }
 
