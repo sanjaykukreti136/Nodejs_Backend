@@ -23,7 +23,7 @@ app.use('/admin', exp_routes.routes);
 app.use(publicRoutes);   ////  it is comment bcz it will redirect to '/' url , so if it will not commentd
 /// then our 404 page never executed
 app.use((req, res) => {
-    res.status(404).render('page-not-found', { pageTit: "Page Not Found :) " })
+    res.status(404).render('page-not-found', { pageTitle: "Page Not Found :) " , path:'/' })
     // res.status(404).sendFile(path.join(__dirname + '/views/page-not-found.html')) /// 404 page should be in last
 })
 
