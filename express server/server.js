@@ -3,6 +3,7 @@ const path = require('path')
 const app = express();
 const bodyParser = require('body-parser');
 const expressHbs = require('express-handlebars');
+const errorPage = require('./controllers/product')
 app.listen('3000', () => {
     console.log("server is running");
 
@@ -17,15 +18,12 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-const exp_routes = require('./routes/admin');
-const publicRoutes = require('./routes/shop');
-app.use('/admin', exp_routes.routes);
-app.use(publicRoutes);   ////  it is comment bcz it will redirect to '/' url , so if it will not commentd
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);   ////  it is comment bcz it will redirect to '/' url , so if it will not commentd
 /// then our 404 page never executed
-app.use((req, res) => {
-    res.status(404).render('page-not-found', { pageTitle: "Page Not Found :) " , path:'/' })
-    // res.status(404).sendFile(path.join(__dirname + '/views/page-not-found.html')) /// 404 page should be in last
-})
+app.use(errorPage.err)
 
 
 
